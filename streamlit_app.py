@@ -23,7 +23,7 @@ def load_movie_data():
             lambda x: x[0] if len(x) > 0 else "Unknown"
         )
         movies_df = movies_df.rename(columns={"vote_average": "rating", "release_date": "year"})
-        movies_df["year"] = pd.to_datetime(movies_df["year"]).dt.year
+        movies_df["year"] = pd.to_datetime(movies_df["year"],format="mixed").dt.year
         
         if "movie_id" not in movies_df.columns:
             movies_df["movie_id"] = movies_df.index + 1
