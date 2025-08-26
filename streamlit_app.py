@@ -87,14 +87,19 @@ def login_page():
             
         if existing_account:
             uploaded_file = st.file_uploader("Upload your movie ratings CSV", type="csv")
-            if uploaded_file and username:
+            if uploaded_file is not None and username:
                 st.session_state.user_ratings = load_user_ratings_from_csv(uploaded_file, movies_df)
                 if st.session_state.user_ratings:
                     st.session_state.genre_preferences = calculate_genre_preferences(movies_df, st.session_state.user_ratings)
-                    st.session_state.update({'user_authenticated': True, 'username': username, 'new_user': False, 
-                                           'discover_complete': True, 'current_page': "Home", 'selected_menu': "Home"})
+                    st.session_state.user_authenticated = True
+                    st.session_state.username = username
+                    st.session_state.new_user = False
+                    st.session_state.discover_complete = True
+                    st.session_state.current_page = "Home"
+                    st.session_state.selected_menu = "Home"
                     st.rerun()
-                else: st.error("No valid ratings found in the uploaded file.")
+                else:
+                    st.error("No valid ratings found in the uploaded file.")
 
 # Navigation menu
 def custom_option_menu():
