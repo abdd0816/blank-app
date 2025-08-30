@@ -70,7 +70,7 @@ def load_user_ratings_from_csv(uploaded_file, movies_df):
 
 # User authentication
 def login_page():
-    st.title("🎬 CineMatch - Movie Recommendation System")
+    st.title("🎬 xVisionx - Movie Recommendation System")
     st.markdown("### Sign in to get personalized recommendations")
     
     with st.form("login_form"):
@@ -116,7 +116,7 @@ def custom_option_menu():
 
 # Home page
 def home_page():
-    st.title(f"Welcome to CineMatch, {st.session_state.username}!")
+    st.title(f"Welcome to xVisionx, {st.session_state.username}!")
     st.markdown("### How would you like to discover movies today?")
     
     col1, col2, col3 = st.columns(3)
@@ -358,7 +358,7 @@ def main():
     if movies_df.empty: return st.error("Failed to load movie data")
     
     with st.sidebar:
-        st.title("🎬 CineMatch")
+        st.title("🎬 xVisionx")
         if st.session_state.user_authenticated:
             st.write(f"Welcome, {st.session_state.username}!")
             custom_option_menu()
